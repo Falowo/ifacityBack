@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+
+# misc
+.env
+.env.*
+
+# images
+# /public
+# **/*.png
+# **/*.jpeg
+# **/*.jpg
+**/images/*
+
+# prod
+
+**/dist/
