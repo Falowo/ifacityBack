@@ -9,12 +9,10 @@ import { User } from "../../database/models/User";
 import fs from "fs-extra";
 import path from "path";
 
-
 router.get("/req", async (req, res) => {
   console.log(req);
-  res.status(200).json(req)
-  
-})
+  res.status(200).json(req);
+});
 
 //delete user
 router.delete(
@@ -59,6 +57,7 @@ router.get(
   "/search/:search",
   async (req: Request, res: Response) => {
     const search = req.params.search;
+    const currentUserId = req.body;
     function escapeRegExp(string) {
       return string.replace(/[.*+?^${}()|[]\]/g, "$&");
     }
@@ -386,7 +385,7 @@ router.get(
 router.put(
   "/:id/friendRequest",
   async (req: Request, res: Response) => {
-    const {currentUserId}= req.body
+    const { currentUserId } = req.body;
     // if the friend is not same as currentUser
     if (
       currentUserId.toString() !== req.params.id.toString()
@@ -495,8 +494,9 @@ router.put(
 router.put(
   "/currentUser/checkFriendRequests",
   async (req: Request, res: Response) => {
-    const {currentUserId} = req.body;
-   try  {  const updatedCurrentUser =
+    const { currentUserId } = req.body;
+    try {
+      const updatedCurrentUser =
         await UserModel.findByIdAndUpdate(
           currentUserId,
           { notCheckedFriendRequestsFrom: [] },
@@ -512,7 +512,7 @@ router.put(
 router.put(
   "/currentUser/checkAcceptedFriendRequests",
   async (req: Request, res: Response) => {
-    const {currentUserId} = req.body;
+    const { currentUserId } = req.body;
     try {
       const updatedCurrentUser =
         await UserModel.findByIdAndUpdate(
@@ -532,7 +532,7 @@ router.put(
 router.put(
   "/:id/addFriend",
   async (req: Request, res: Response) => {
-    const{currentUserId}=req.body;
+    const { currentUserId } = req.body;
     if (
       currentUserId.toString() !== req.params.id.toString()
     ) {
@@ -581,7 +581,7 @@ router.put(
 router.put(
   "/currentUser/editProfilePicture",
   async (req: Request, res: Response) => {
-    const { fileName } = req.body;
+    const { fileName, currentUserId } = req.body;
 
     try {
       let currentUser = await UserModel.findById(
@@ -615,8 +615,8 @@ router.put(
 // edit cover picture
 router.put(
   "/currentUser/editCoverPicture",
-  async (req: AppRequest, res: Response) => {
-    const { fileName } = req.body;
+  async (req: Request, res: Response) => {
+    const { fileName, currentUserId } = req.body;
 
     try {
       let currentUser = await UserModel.findById(
@@ -651,10 +651,10 @@ router.put(
 // update currentUser info
 router.put(
   "/currentUser/updateInfo",
-  async (req:Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const { city, from, relationship } =
       req.body.toUpdateUserInfo;
-      const {currentUserId}= req.body
+    const { currentUserId } = req.body;
     try {
       let currentUser = await UserModel.findById(
         currentUserId,
@@ -681,7 +681,7 @@ router.put(
 router.put(
   "/currentUser/updateDesc",
   async (req: Request, res: Response) => {
-    const {currentUserId}= req.body
+    const { currentUserId } = req.body;
 
     const { desc } = req.body.toUpdateUserDesc;
 
