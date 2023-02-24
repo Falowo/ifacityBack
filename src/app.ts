@@ -11,7 +11,7 @@ import "./database";
 import cors from "cors";
 import path from "path";
 import morgan from "morgan";
-import index from "./routes/private/index";
+import privateIndex from "./routes/private/";
 import multer from "multer";
 // -----------------------auth0---------------------------------------------------------
 import { auth } from "express-oauth2-jwt-bearer";
@@ -45,7 +45,7 @@ import "./config/socket.io.config/";
 const checkJwt = auth({
   audience: process.env.AUDIENCE,
   issuerBaseURL: process.env.ISSUER_BASE_URL,
-  tokenSigningAlg : process.env.TOKEN_SIGNING_ALG
+  tokenSigningAlg: process.env.TOKEN_SIGNING_ALG,
 });
 
 app.use(express.json());
@@ -103,7 +103,7 @@ app.post(
   },
 );
 
-app.use("/api/", checkJwt, index);
+app.use("/api/private", checkJwt, privateIndex);
 
 httpServer.listen(port);
 // app.listen(port);
