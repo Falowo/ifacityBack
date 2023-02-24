@@ -12,6 +12,7 @@ import cors from "cors";
 import path from "path";
 import morgan from "morgan";
 import privateIndex from "./routes/private/";
+import publicIndex from "./routes/public/";
 import multer from "multer";
 // -----------------------auth0---------------------------------------------------------
 import { auth } from "express-oauth2-jwt-bearer";
@@ -104,6 +105,7 @@ app.post(
 );
 
 app.use("/api/private", checkJwt, privateIndex);
+app.use("/api/public", checkJwt, publicIndex);
 
 httpServer.listen(port);
 // app.listen(port);
