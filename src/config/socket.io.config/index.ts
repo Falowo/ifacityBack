@@ -1,14 +1,12 @@
 import { Server, Socket } from "socket.io";
-import {
-   httpServer
-} from "../../app";
-import { IConversation, IPMessage } from "./interfaces";
+import { httpServer } from "../../app";
+import { IConversation, IPMessage } from "../../interfaces";
 
 export const InitSocketServer = () => {
   const io: Server = new Server(httpServer, {
     cors: {
       origin: [
-        "https://astonishing-naiad-20ad9f.netlify.app",
+        "https://inquisitive-pudding-646e76.netlify.app/",
         "http://localhost:3000",
       ],
       methods: ["GET", "POST"],

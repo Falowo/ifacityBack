@@ -11,8 +11,8 @@ import "./database";
 import cors from "cors";
 import path from "path";
 import morgan from "morgan";
-import privateIndex from "./routes/private/";
-import publicIndex from "./routes/public/";
+import privateIndex from "./routes/private.routes";
+import publicIndex from "./routes/public.routes";
 import multer from "multer";
 // -----------------------auth0---------------------------------------------------------
 import { auth } from "express-oauth2-jwt-bearer";
