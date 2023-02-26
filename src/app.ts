@@ -104,8 +104,8 @@ app.post(
   },
 );
 
-app.use("/api/private", checkJwt, privateIndex);
-app.use("/api/public", checkJwt, publicIndex);
+app.use("/api/private/", checkJwt, privateIndex);
+app.use("/api/public/", checkJwt, publicIndex);
 
 httpServer.listen(port);
 // app.listen(port);
