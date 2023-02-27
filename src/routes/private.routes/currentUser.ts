@@ -8,7 +8,7 @@ router.get("/req", async (req, res) => {
 });
 
 //signIn
-router.post("./getOrCreate", getOrCreate);
+router.post("/getOrCreate", getOrCreate);
 
 // logout
 
