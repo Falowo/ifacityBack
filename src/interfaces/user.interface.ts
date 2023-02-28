@@ -1,27 +1,38 @@
 export interface IUser {
-  token?: string;
   _id?: string;
-  sub?: string;
-  username: string;
-  email?: string;
-  password?: string;
-  profilePicture?: string;
-  coverPicture?: string;
-  followersId?: string[];
-  followingsId?: string[];
-  friendRequestsFrom?: string[];
-  friendRequestsTo?: string[];
-  friends?: string[];
-  blocked?: string[];
-  notCheckedFriendRequestsFrom?: string[];
-  notCheckedAcceptedFriendRequestsBy?: string[];
-  isAdmin?: boolean;
-  desc?: string;
-  city?: string;
-  from?: string;
-  relationship?: number;
-  birthDate?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
+  name?: String;
+  given_name?: String;
+  family_name?: String;
+  middle_name?: String;
+  nickname?: String;
+  preferred_username?: String;
+  profile?: String;
+  picture?: String;
+  website?: String;
+  email?: String;
+  email_verified?: boolean;
+  gender?: String;
+  birthdate?: String;
+  zoneinfo?: String;
+  locale?: String;
+  phone_number?: String;
+  phone_number_verified?: boolean;
+  address?: String;
+  updated_at?: string;
+  sub: String;
+  friendsIds?: string[];
+  followersIds?: string[];
+  notCheckedNewFollowersIds?: string[];
+  blockedIds?: string[];
+  isAdmin: boolean;
+  isBabalawo: boolean;
+  desc?: String;
+  status?: "FREE" | "ECO" | "PREMIUM";
+  [key: string]: any;
 }
+
 
 export interface User {
   name?: string;

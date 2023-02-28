@@ -16,13 +16,26 @@ export class User {
   public createdAt?: Date;
   public updatedAt?: Date;
 
-  @prop({
-    require: true,
-    minlength: 3,
-    maxlength: 20,
-    unique: true,
-  })
-  public username: String;
+  public name?: String;
+  public given_name?: String;
+  public family_name?: String;
+  public middle_name?: String;
+  public nickname?: String;
+  public preferred_username?: String;
+  public profile?: String;
+  public picture?: String;
+  public website?: String;
+  public email?: String;
+  public email_verified?: boolean;
+  public gender?: String;
+  public birthdate?: String;
+  public zoneinfo?: String;
+  public locale?: String;
+  public phone_number?: String;
+  public phone_number_verified?: boolean;
+  public address?: String;
+  updated_at?: string;
+
 
   @prop({
     require: true,
@@ -30,13 +43,12 @@ export class User {
   })
   public sub: String;
 
-
-  @prop({ type: String })
-  public profilePicture?: String;
-
-  @prop({ type: String })
-  public coverPicture?: String;
-
+  
+  @prop({
+    ref: () => User,
+  })
+  public friendsIds?: Ref<User>[];
+  
   @prop({
     ref: () => User,
   })
@@ -45,68 +57,35 @@ export class User {
   @prop({
     ref: () => User,
   })
-  public followedIds?: Ref<User>[];
+  public notCheckedNewFollowersIds?: Ref<User>[];
 
   @prop({
     ref: () => User,
   })
-  public friendRequestsFrom?: Ref<User>[];
-
-  @prop({
-    ref: () => User,
-  })
-  public notCheckedFriendRequestsFrom?: Ref<User>[];
-
-  @prop({
-    ref: () => User,
-  })
-  public notCheckedAcceptedFriendRequestsBy?: Ref<User>[];
-
-  @prop({
-    ref: () => User,
-  })
-  public friendRequestsTo?: Ref<User>[];
-
-  @prop({
-    ref: () => User,
-  })
-  public friends?: Ref<User>[];
-
-  @prop({
-    ref: () => User,
-  })
-  public blocked?: Ref<User>[];
+  public blockedIds?: Ref<User>[];
 
   @prop({
     default: false,
   })
   public isAdmin: boolean;
+
   @prop({
     default: false,
   })
+  public isBabalawo: boolean;
+
+  
 
   @prop({
-    maxlength: 50,
+    maxlength: 256,
   })
   public desc?: String;
 
   @prop({
-    maxlength: 50,
+    enum: ["FREE", "ECO",  "PREMIUM"],
   })
-  public city?: String;
+  public status?: String;
 
-  @prop({
-    maxlength: 50,
-  })
-  public from?: String;
-
-  @prop({
-    enum: [1, 2, 3],
-  })
-  public relationship?: Number;
-
-  @prop()
-  public birthDate?: Date;
-
+  
 
 }
