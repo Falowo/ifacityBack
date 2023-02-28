@@ -5,7 +5,10 @@ export const getOrCreate = async (
   res: Response,
   // next: NextFunction,
 ) => {
-  console.log({req});
+
+  const auth = req.auth;
+  const payload = req.auth?.payload;
+  console.log({auth, payload});
 
   const { authUser } = req.body;
 
