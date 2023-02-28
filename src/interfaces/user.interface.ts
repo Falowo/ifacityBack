@@ -1,3 +1,8 @@
+export enum StatusUser {
+  FREE = 10,
+  ECO = 20,
+  PREMIUM = 30,
+}
 export interface IUser {
   _id?: string;
   createdAt?: Date;
@@ -29,7 +34,7 @@ export interface IUser {
   isAdmin: boolean;
   isBabalawo: boolean;
   desc?: string;
-  status?: "FREE" | "ECO" | "PREMIUM";
+  status?: StatusUser;
   [key: string]: any;
 }
 

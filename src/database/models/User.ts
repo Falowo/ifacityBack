@@ -87,7 +87,7 @@ export class User {
   })
   public desc?: String;
   @prop({
-    enum: ["FREE", "ECO", "PREMIUM"],
+    enum: [10, 20, 30],
   })
-  public status?: String;
+  public status?: number;
 }
