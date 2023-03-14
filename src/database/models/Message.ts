@@ -30,14 +30,14 @@ export class Message {
   @prop({
     required: true,
   })
-  public text: string;
+  public content: string;
+
   // abort or error
   // 10: pending
   // 20: sent
   // 30: received by all users
   // 40: checked by all users
   // 50: abort
-
   @prop({
     enum: [0, 10, 20, 30, 40],
     default: 1,
